@@ -89,10 +89,13 @@ function NgoDashboard() {
                                         <li li key={index} className="mb-4 p-4 bg-gray-700 rounded-lg" >
                                             <h2 className="text-2xl font-bold mb-2 text-black dark:text-white">{campaign.name}</h2>
                                             <p className="text-gray-700 dark:text-gray-300 mb-2">
-                                                <strong>Eligibility:</strong> {campaign.description}
+                                                <strong>Description:</strong> {campaign.description}
                                             </p>
                                             <p className="text-gray-700 dark:text-gray-300 mb-4">
-                                                <strong>Amount:</strong> ${campaign.eligibility}
+                                                <strong>Eligibility:</strong> {campaign.eligibility}
+                                            </p>
+                                            <p className="text-gray-700 dark:text-gray-300 mb-4">
+                                                <strong>Fund Amount:</strong> ${campaign.fund}
                                             </p>
 
                                         </li>
