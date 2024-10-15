@@ -1,9 +1,14 @@
+import SignupPage from './signupPage'
 import './index.css'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 function App() {
 
   return (
     <>
-     <p className='font-bold underline'>Hey</p>
+     <Routes>
+      <Route path='/' element={<SignupPage/>}/>
+     </Routes>
     </>
   )
 }
