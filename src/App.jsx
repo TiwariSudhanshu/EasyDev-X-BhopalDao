@@ -1,9 +1,9 @@
-
+import './index.css'
 function App() {
 
   return (
     <>
-     <p>Hey</p>
+     <p className='font-bold underline'>Hey</p>
     </>
   )
 }
