@@ -1,8 +1,8 @@
-import SignupPage from './signupPage'
+import SignupPage from './components/signupPage'
 import './index.css'
 import { Routes, Route } from 'react-router-dom'
-import DashboardLayout from "../src/student/dashboard"
-import LoginPage from './loginPage'
+import DashboardLayout from "./dashboard/student"
+import LoginPage from './components/loginPage'
 function App() {
 
   return (
@@ -10,8 +10,7 @@ function App() {
      <Routes>
       <Route path='/register' element={<SignupPage/>}/>
       <Route path='/' element={<LoginPage/>}/>
-      
-      <Route path='/studentdash' element={<DashboardLayout/>}/>
+      <Route path='/student/dashboard' element={<DashboardLayout/>}/>
      </Routes>
     </>
   )
