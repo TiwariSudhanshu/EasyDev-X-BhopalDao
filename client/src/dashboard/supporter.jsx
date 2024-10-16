@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaUser } from 'react-icons/fa';
+import { useStateContext } from '../context';
 
 function Supporter() {
     // Dummy campaign data
@@ -8,6 +9,8 @@ function Supporter() {
         { name: 'Clean Water Project', eligibility: 'Public Donations', fund: 2000, description: 'Provide clean water to rural areas.', donated: false },
         { name: 'Education for All', eligibility: 'Everyone', fund: 1500, description: 'Support underprivileged children.', donated: false },
     ];
+ 
+    const {connect, address} = useStateContext();
 
     // State to keep track of donations and view mode
     const [donatedCampaigns, setDonatedCampaigns] = useState([]);
@@ -26,7 +29,7 @@ function Supporter() {
     return (
         <div className="flex min-h-screen bg-gray-100 dark:bg-gray-900">
             {/* Sidebar */}
-            <aside className="w-64 bg-white dark:bg-gray-800 p-4 fixed h-full">
+            {/* <aside className="w-64 bg-white dark:bg-gray-800 p-4 fixed h-full">
                 <div className="text-white text-[4vmax] flex flex-col justify-center items-center pb-8 pt-4">
                     <FaUser />
                     <li className="text-gray-600 list-none dark:text-gray-300 font-bold text-[1.9vmax]">
@@ -47,7 +50,43 @@ function Supporter() {
                         My Donations
                     </button>
                 </div>
-            </aside>
+            </aside> */}
+
+            {/* Sidebar */}
+<aside className="w-64 bg-white dark:bg-gray-800 p-4 fixed h-full">
+    <div className="text-white text-[4vmax] flex flex-col justify-center items-center pb-8 pt-4">
+        <FaUser />
+        <li className="text-gray-600 list-none dark:text-gray-300 font-bold text-[1.9vmax]">
+            <a href="#profile" className="mt-10 flex items-center">Supporter Dashboard</a>
+        </li>
+    </div>
+    <div className="mt-4 text-gray-600 dark:text-gray-300">
+        <button
+            onClick={() => switchView('live')}
+            className={`w-full text-left py-2 px-4 mb-2 ${view === 'live' ? 'bg-blue-500 text-white' : 'bg-gray-200 dark:bg-gray-700'} rounded-lg`}
+        >
+            Live Campaigns
+        </button>
+        <button
+            onClick={() => switchView('donations')}
+            className={`w-full text-left py-2 px-4 mb-2 ${view === 'donations' ? 'bg-blue-500 text-white' : 'bg-gray-200 dark:bg-gray-700'} rounded-lg`}
+        >
+            My Donations
+        </button>
+
+        {/* Connect Button */}
+        <button
+            className="w-full text-left py-2 px-4 mt-4 bg-green-500 text-white rounded-lg hover:bg-green-600 transition"
+            onClick={() => {
+                if(address)navigate('create-campaign')
+                else connect()
+            }}
+        >
+            Connect
+        </button>
+    </div>
+</aside>
+
 
             {/* Main Content */}
             <main className="flex-1 flex justify-center items-center p-6 ml-64">

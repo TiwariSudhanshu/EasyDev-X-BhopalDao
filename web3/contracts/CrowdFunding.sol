@@ -25,9 +25,13 @@ contract CrowdFunding {
         uint256 _deadline,
         string memory _image
     ) public returns (uint256) {
-        require(_deadline > block.timestamp, "The deadline should be a date in the future.");
-
+        
         Campaign storage campaign = Campaigns[numberOfCampaigns];
+        require(
+            _deadline > block.timestamp,
+            "The deadline should be a date in the future."
+        );
+
         campaign.owner = _owner;
         campaign.title = _title;
         campaign.description = _description;
@@ -57,7 +61,9 @@ contract CrowdFunding {
         }
     }
 
-    function getDonators(uint256 _id) public view returns (address[] memory, uint256[] memory) {
+    function getDonators(
+        uint256 _id
+    ) public view returns (address[] memory, uint256[] memory) {
         return (Campaigns[_id].donators, Campaigns[_id].donations);
     }
 
